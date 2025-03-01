@@ -2,8 +2,8 @@ import "../stylesheets/application.scss";
 import ReactRailsUJS from "react_ujs";
 import App from "../src/App";
 
-const { setAuthHeaders } = require("apis/axios");
-const { initializeLogger } = require("common/logger");
+import { setAuthHeaders } from "apis/axios";
+import { initializeLogger } from "common/logger";
 
 initializeLogger();
 setAuthHeaders();
