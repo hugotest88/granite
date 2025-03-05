@@ -9,13 +9,13 @@ import sass from "sass";
 
 const require = createRequire(import.meta.url);
 const svgPlugin = await import("esbuild-plugin-svgr");
-const projectConfigurations = await import("./config/build/config.js");
+const projectConfigurations = require('./path/to/projectConfigurations') || {};
 const postCssConfig = await import("./postcss.config.cjs");
-const { alias, define, extensions } = projectConfigurations.default;
+const { alias, define, extensions } = projectConfigurations.default || {};
 
 const isWatchMode = process.argv.includes("--watch");
 
-const { extensions: _, ...projectConfigWithoutExtensions } = projectConfigurations.default;
+const { extensions: _, ...projectConfigWithoutExtensions } = projectConfigurations.default || {};
 
 const defaultConfigurations = {
   bundle: true,
