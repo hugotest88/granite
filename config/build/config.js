@@ -44,6 +44,7 @@ const extensions = [
   ".ts",
   ".mjs",
   ".js",
+  ".cjs",
   ".jsx",
   ".sass",
   ".scss",
