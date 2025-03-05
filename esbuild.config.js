@@ -8,15 +8,14 @@ import { mergeDeepLeft } from "ramda";
 import sass from "sass";
 
 const require = createRequire(import.meta.url);
-const svgPlugin = require("esbuild-plugin-svgr");
-const projectConfigurations = require("./config/build/config.js");
-const postCssConfig = require("./postcss.config.js");
-const { alias, define, extensions } = projectConfigurations;
+const svgPlugin = await import("esbuild-plugin-svgr");
+const projectConfigurations = await import("./config/build/config.js");
+const postCssConfig = await import("./postcss.config.js");
+const { alias, define, extensions } = projectConfigurations.default;
 
 const isWatchMode = process.argv.includes("--watch");
 
-const { extensions: _, ...projectConfigWithoutExtensions } =
-  projectConfigurations;
+const { extensions: _, ...projectConfigWithoutExtensions } = projectConfigurations.default;
 
 const defaultConfigurations = {
   bundle: true,
@@ -34,10 +33,10 @@ const defaultConfigurations = {
     ".ico": "file",
   },
   plugins: [
-    svgPlugin(),
+    svgPlugin.default(),
     sassPlugin({
       transform: async (source) => {
-        const { css } = await postcss(postCssConfig.plugins).process(source, {
+        const { css } = await postcss(postCssConfig.default.plugins).process(source, {
           from: undefined,
         });
         return css;
