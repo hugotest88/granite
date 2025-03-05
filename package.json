@@ -1,6 +1,7 @@
 {
   "name": "app",
   "private": true,
+  "type": "module",
   "devDependencies": {
     "@babel/eslint-parser": "7.17.0",
     "buffer": "^6.0.3",
