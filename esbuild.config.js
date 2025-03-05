@@ -9,7 +9,7 @@ import sass from "sass";
 
 const require = createRequire(import.meta.url);
 const svgPlugin = await import("esbuild-plugin-svgr");
-const projectConfigurations = require('./config/build/config.js') || {};
+const projectConfigurations = await import('./config/build/config.js') || {};
 const postCssConfig = await import("./postcss.config.cjs");
 const { alias, define, extensions } = projectConfigurations.default || {};
 
